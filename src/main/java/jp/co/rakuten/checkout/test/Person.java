@@ -40,5 +40,8 @@ public void onCreate(){
 public void onDestroy(){
     System.out.println("Person Destroyed");
 }
- 
+
+public static Person getInstance(int id,String name){
+    return new Person(id, name);
+}
 }

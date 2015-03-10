@@ -16,8 +16,8 @@ public class App {
         // TODO Auto-generated method stub
      ApplicationContext context = new ClassPathXmlApplicationContext("jp/co/rakuten/checkout/beans/ProjectBeans.xml");
      Person person1 = (Person)context.getBean("person");
-     Person person2 = (Person)context.getBean("person");
-     person1.setTaxId(777);
+     System.out.println(person1);
+     Person person2 = (Person)context.getBean("person2");
      System.out.println(person2);
      ((ClassPathXmlApplicationContext)context).close();
     }

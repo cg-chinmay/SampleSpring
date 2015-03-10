@@ -6,7 +6,8 @@
 
 
 	<bean id="person" class="jp.co.rakuten.checkout.test.Person"
-		init-method="onCreate" destroy-method="onDestroy">
+		init-method="onCreate" destroy-method="onDestroy"
+		factory-method="getInstance">
 		<constructor-arg value="mark" name="name"></constructor-arg>
 		<constructor-arg value="56" name="id"></constructor-arg>
 		<property name="add" ref="add"></property>
@@ -16,5 +17,15 @@
 	<bean id="add" class="jp.co.rakuten.checkout.test.Address">
 		<constructor-arg name="street" value="41-B Baker Street"></constructor-arg>
 		<constructor-arg name="postCode" value="1580095"></constructor-arg>
+	</bean>
+	<bean id="personFactory"
+		class="jp.co.rakuten.checkout.test.PersonFactory">
+	</bean>
+	<bean id="person2" class="jp.co.rakuten.checkout.test.Person"
+		factory-bean="personFactory" factory-method="createPersons">
+		<constructor-arg value="mark" name="name"></constructor-arg>
+        <constructor-arg value="56" name="id"></constructor-arg>
+        <property name="add" ref="add"></property>
+        <property name="taxId" value="444"></property>
 	</bean>
 </beans>
