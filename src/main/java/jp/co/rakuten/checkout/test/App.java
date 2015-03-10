@@ -17,8 +17,8 @@ public class App {
      ApplicationContext context = new ClassPathXmlApplicationContext("jp/co/rakuten/checkout/beans/ProjectBeans.xml");
      Person person1 = (Person)context.getBean("person");
      System.out.println(person1);
-     Person person2 = (Person)context.getBean("person2");
-     System.out.println(person2);
+     Address add2 = (Address)context.getBean("add2");
+     System.out.println(add2);
      ((ClassPathXmlApplicationContext)context).close();
     }
 
