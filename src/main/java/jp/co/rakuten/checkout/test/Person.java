@@ -5,6 +5,7 @@ public class Person {
     private int id;
     private String name ;
     private Address add;
+    private int taxId;
     
     public Person(){
         
@@ -22,10 +23,22 @@ public void setAdd(Address add) {
     this.add = add;
 }
 
-@Override
-public String toString() {
-    return "Person [id=" + id + ", name=" + name + ", add=" + add + "]";
+
+public void setTaxId(int taxId) {
+    this.taxId = taxId;
 }
 
+@Override
+public String toString() {
+    return "Person [id=" + id + ", name=" + name + ", add=" + add + ", taxId=" + taxId + "]";
+}
+
+public void onCreate(){
+    System.out.println("Person Created");
+}
+
+public void onDestroy(){
+    System.out.println("Person Destroyed");
+}
  
 }

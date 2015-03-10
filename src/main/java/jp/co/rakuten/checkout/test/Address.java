@@ -13,5 +13,10 @@ public Address(String street, String postCode) {
 public String toString() {
     return "Address [street=" + street + ", postCode=" + postCode + "]";
 }
-
+public void init(){
+    System.out.println("Global init");
+}
+public void destroy(){
+    System.out.println("Global Destroy");
+}
 }
