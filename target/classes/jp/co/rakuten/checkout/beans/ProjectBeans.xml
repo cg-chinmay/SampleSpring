@@ -38,18 +38,13 @@
 	</bean>
 	<bean id="myTeam" class="jp.co.rakuten.checkout.test.MyTeam">
 		<property name="captain" ref="player3"></property>
+		
 		<property name="players">
-			<list>
-				<bean id="player1" class="jp.co.rakuten.checkout.test.Players">
-					<property name="name" value="Sachin"></property>
-					<property name="country" value="India"></property>
-				</bean>
-
-				<bean id="player2" class="jp.co.rakuten.checkout.test.Players">
-					<property name="name" value="Lara"></property>
-					<property name="country" value="WestIndies"></property>
-				</bean>
-			</list>
+			<props>
+				<prop key="India">Dhoni</prop>
+				<prop key="Australia">Hayden</prop>
+				<prop key="Srilanka">Murli</prop>
+			</props>
 		</property>
 	</bean>
 </beans>

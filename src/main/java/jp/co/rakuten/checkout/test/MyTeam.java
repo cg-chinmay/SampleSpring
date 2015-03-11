@@ -1,28 +1,33 @@
 package jp.co.rakuten.checkout.test;
 
-import java.util.List;
+import java.util.Map;
+
 
 public class MyTeam {
 private Players captain;
-private List<Players> players;
+private Map<String, String> players;
+
 public Players getCaptain() {
     return captain;
 }
 public void setCaptain(Players captain) {
     this.captain = captain;
 }
-public List<Players> getPlayers() {
+
+
+public Map<String, String> getPlayers() {
     return players;
 }
-public void setPlayers(List<Players> players) {
+public void setPlayers(Map<String, String> players) {
     this.players = players;
 }
+
 @Override
 public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("My Team contains ");
-    for(Players player:players){
-        sb.append("\n"+player.getName());
+    for(Map.Entry<String, String> entry:players.entrySet()){
+        sb.append("\n"+entry.getValue());
     }
     sb.append("\nThe Captain is "+captain.getName());
     return sb.toString();
