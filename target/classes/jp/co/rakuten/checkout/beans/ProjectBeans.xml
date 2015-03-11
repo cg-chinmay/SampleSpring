@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
@@ -17,30 +16,22 @@
 		<constructor-arg name="street" value="41-B Baker Street"></constructor-arg>
 		<constructor-arg name="postCode" value="1580095"></constructor-arg>
 	</bean>
-	
-	<bean id="add2" class="jp.co.rakuten.checkout.test.Address" p:street="56-C Rodeo Drive" p:postCode="14000003">
-        
-    </bean>
-    
-	<bean id="personFactory"
-		class="jp.co.rakuten.checkout.test.PersonFactory">
+
+	<bean id="add2" class="jp.co.rakuten.checkout.test.Address"
+		p:street="56-C Rodeo Drive" p:postCode="14000003">
+
+	</bean>
+
+	<bean id="personFactory" class="jp.co.rakuten.checkout.test.PersonFactory">
 	</bean>
 	<bean id="person2" class="jp.co.rakuten.checkout.test.Person"
 		factory-bean="personFactory" factory-method="createPersons">
 		<constructor-arg value="mark" name="name"></constructor-arg>
-        <constructor-arg value="56" name="id"></constructor-arg>
-        <property name="add" ref="add"></property>
-        <property name="taxId" value="444"></property>
+		<constructor-arg value="56" name="id"></constructor-arg>
+		<property name="add" ref="add"></property>
+		<property name="taxId" value="444"></property>
 	</bean>
-	<bean id="player1" class="jp.co.rakuten.checkout.test.Players">
-		<property name="name" value="Sachin"></property>
-		<property name="country" value="India"></property>
-	</bean>
-	
-	<bean id="player2" class="jp.co.rakuten.checkout.test.Players">
-		<property name="name" value="Lara"></property>
-		<property name="country" value="WestIndies"></property>
-	</bean>
+
 	<bean id="player3" class="jp.co.rakuten.checkout.test.Players">
 		<property name="name" value="Ponting"></property>
 		<property name="country" value="Australia"></property>
@@ -49,9 +40,15 @@
 		<property name="captain" ref="player3"></property>
 		<property name="players">
 			<list>
-				<ref bean="player1" />
-				<ref bean="player2" />
-				<ref bean="player3" />
+				<bean id="player1" class="jp.co.rakuten.checkout.test.Players">
+					<property name="name" value="Sachin"></property>
+					<property name="country" value="India"></property>
+				</bean>
+
+				<bean id="player2" class="jp.co.rakuten.checkout.test.Players">
+					<property name="name" value="Lara"></property>
+					<property name="country" value="WestIndies"></property>
+				</bean>
 			</list>
 		</property>
 	</bean>
