@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	default-init-method="init" default-destroy-method="destroy"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 	<bean id="person" class="jp.co.rakuten.checkout.test.Person"
-		init-method="onCreate" destroy-method="onDestroy"
 		factory-method="getInstance">
 		<constructor-arg value="mark" name="name"></constructor-arg>
 		<constructor-arg value="56" name="id"></constructor-arg>
@@ -33,5 +31,28 @@
         <constructor-arg value="56" name="id"></constructor-arg>
         <property name="add" ref="add"></property>
         <property name="taxId" value="444"></property>
+	</bean>
+	<bean id="player1" class="jp.co.rakuten.checkout.test.Players">
+		<property name="name" value="Sachin"></property>
+		<property name="country" value="India"></property>
+	</bean>
+	
+	<bean id="player2" class="jp.co.rakuten.checkout.test.Players">
+		<property name="name" value="Lara"></property>
+		<property name="country" value="WestIndies"></property>
+	</bean>
+	<bean id="player3" class="jp.co.rakuten.checkout.test.Players">
+		<property name="name" value="Ponting"></property>
+		<property name="country" value="Australia"></property>
+	</bean>
+	<bean id="myTeam" class="jp.co.rakuten.checkout.test.MyTeam">
+		<property name="captain" ref="player3"></property>
+		<property name="players">
+			<list>
+				<ref bean="player1" />
+				<ref bean="player2" />
+				<ref bean="player3" />
+			</list>
+		</property>
 	</bean>
 </beans>

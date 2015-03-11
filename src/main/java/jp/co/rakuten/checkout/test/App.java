@@ -15,10 +15,8 @@ public class App {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
      ApplicationContext context = new ClassPathXmlApplicationContext("jp/co/rakuten/checkout/beans/ProjectBeans.xml");
-     Person person1 = (Person)context.getBean("person");
-     System.out.println(person1);
-     Address add2 = (Address)context.getBean("add2");
-     System.out.println(add2);
+     MyTeam team = (MyTeam)context.getBean("myTeam");
+     System.out.println(team);
      ((ClassPathXmlApplicationContext)context).close();
     }
 
