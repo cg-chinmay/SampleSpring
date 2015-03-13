@@ -2,8 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-	default-autowire="byType">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
 
 	<bean id="person" class="jp.co.rakuten.checkout.test.Person"
@@ -33,46 +34,43 @@
 		<property name="add" ref="add"></property>
 		<property name="taxId" value="444"></property>
 	</bean>
-    <bean id="player1" class="jp.co.rakuten.checkout.test.Players">
-        <property name="name" value="Sachin"></property>
-        <property name="country" value="India"></property>
-    </bean>
-    
-    <bean id="player2" class="jp.co.rakuten.checkout.test.Players">
-        <property name="name" value="Afridi"></property>
-        <property name="country" value="Pakistan"></property>
-    </bean>
-    
+	<bean id="player1" class="jp.co.rakuten.checkout.test.Players">
+		<property name="name" value="Sachin"></property>
+		<property name="country" value="India"></property>
+	</bean>
+
+	<bean id="player2" class="jp.co.rakuten.checkout.test.Players">
+		<property name="name" value="Afridi"></property>
+		<property name="country" value="Pakistan"></property>
+	</bean>
+
 	<bean id="player3" class="jp.co.rakuten.checkout.test.Players">
 		<property name="name" value="Ponting"></property>
 		<property name="country" value="Australia"></property>
 	</bean>
 	<bean id="myTeam" class="jp.co.rakuten.checkout.test.MyTeam">
 		<property name="captain" ref="player3"></property>
-		
+
 		<property name="players">
-			
-		<map>
-			<entry key="player1" value-ref="player1"></entry>
-			<entry key="player2" value-ref="player2"></entry>
-			<entry key="player3" value-ref="player3"></entry>
-		</map>
+
+			<map>
+				<entry key="player1" value-ref="player1"></entry>
+				<entry key="player2" value-ref="player2"></entry>
+				<entry key="player3" value-ref="player3"></entry>
+			</map>
 		</property>
 	</bean>
 	<bean id="logger" class="jp.co.rakuten.checkout.test.Logger">
 	</bean>
-	<bean id="fileWriter"
-		class="jp.co.rakuten.checkout.test.FileWriter">
+	<bean id="fileWriter" class="jp.co.rakuten.checkout.test.FileWriter">
 	</bean>
-	<bean id="consoleWriter"
-		class="jp.co.rakuten.checkout.test.ConsoleWriter" primary="true">
+	<bean id="consoleWriter" class="jp.co.rakuten.checkout.test.ConsoleWriter">
+		<qualifier value="toConsole"></qualifier>
 	</bean>
+    
 
-	<bean id="dummy"
+	<context:annotation-config></context:annotation-config>
+	<bean id="consoleDummy"
 		class="jp.co.rakuten.checkout.test.ConsoleWriter">
-	</bean>
-	<bean id="fileWriter2"
-		class="jp.co.rakuten.checkout.test.FileWriter"
-		autowire-candidate="false">
 	</bean>
 </beans>

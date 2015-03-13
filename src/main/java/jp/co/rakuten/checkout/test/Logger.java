@@ -1,14 +1,21 @@
 package jp.co.rakuten.checkout.test;
 
+import jp.co.rakuten.checkout.api.LogWriter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Logger {
-    private FileWriter fileWriter;
+   
+    @Autowired
+    @Qualifier("toFile")
+    private LogWriter fileWriter;
+    
+    @Autowired
+    @Qualifier("toConsole")
     private ConsoleWriter consoleWriter;
-    public void setFileWriter(FileWriter fileWriter) {
-        this.fileWriter = fileWriter;
-    }
-    public void setConsoleWriter(ConsoleWriter consoleWriter) {
-        this.consoleWriter = consoleWriter;
-    }
+    
+   
     public void fileWrite(String text){
         fileWriter.write(text);
     }
