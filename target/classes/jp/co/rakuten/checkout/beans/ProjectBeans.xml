@@ -68,10 +68,5 @@
 	<context:component-scan
 		base-package="jp.co.rakuten.checkout.test">
 	</context:component-scan>
-	<bean id="robot" class="jp.co.rakuten.checkout.test.Robot">
-		<property name="id" value="#{random.getSpeech()?.length()}"></property>
-		<property name="text" value="#{'Hello ' + random.getSpeech()}"></property>
-	</bean>
 	
-	<bean id="random" class="jp.co.rakuten.checkout.test.RandomText"></bean>
 </beans>
