@@ -1,18 +1,20 @@
 package jp.co.rakuten.checkout.test;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import jp.co.rakuten.checkout.api.LogWriter;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
 
 public class Logger {
    
-    @Autowired
-    @Qualifier("toFile")
+    @Inject
+    @Named(value="fileWriter")
     private LogWriter fileWriter;
     
-    @Autowired
-    @Qualifier("toConsole")
+    @Inject
+    @Named(value="consoleWriter")
     private ConsoleWriter consoleWriter;
     
    
