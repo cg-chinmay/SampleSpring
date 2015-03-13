@@ -3,10 +3,12 @@ package jp.co.rakuten.checkout.test;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.stereotype.Component;
+
 import jp.co.rakuten.checkout.api.LogWriter;
 
 
-
+@Component
 public class Logger {
    
     @Inject

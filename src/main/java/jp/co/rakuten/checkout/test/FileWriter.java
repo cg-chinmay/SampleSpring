@@ -1,10 +1,10 @@
 package jp.co.rakuten.checkout.test;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import jp.co.rakuten.checkout.api.LogWriter;
 
-@Qualifier("toFile")
+@Component
 public class FileWriter implements LogWriter{
 
     public void write(String text) {

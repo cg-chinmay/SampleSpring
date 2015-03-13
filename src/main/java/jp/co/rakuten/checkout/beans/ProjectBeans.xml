@@ -60,17 +60,12 @@
 			</map>
 		</property>
 	</bean>
-	<bean id="logger" class="jp.co.rakuten.checkout.test.Logger">
-	</bean>
-	<bean id="fileWriter" class="jp.co.rakuten.checkout.test.FileWriter">
-	</bean>
-	<bean id="consoleWriter" class="jp.co.rakuten.checkout.test.ConsoleWriter">
-		<qualifier value="toConsole"></qualifier>
-	</bean>
-    
 
+    
+    
 	<context:annotation-config></context:annotation-config>
-	<bean id="consoleDummy"
-		class="jp.co.rakuten.checkout.test.ConsoleWriter">
-	</bean>
+
+	<context:component-scan
+		base-package="jp.co.rakuten.checkout.test">
+	</context:component-scan>
 </beans>
