@@ -69,4 +69,6 @@
 		base-package="jp.co.rakuten.checkout.test">
 	</context:component-scan>
 	
+	<context:property-placeholder
+		location="jp/co/rakuten/checkout/properties/jdbc.properties" />
 </beans>

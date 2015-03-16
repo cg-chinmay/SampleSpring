@@ -17,12 +17,12 @@ public class Robot {
     // However everytime random method called inside getSpeech() so value returned is different 
     // ? checks that random.speech is not null only then apply length() method 
     @Autowired
-    public void setId(@Value("#{randomText.speech?.length()}") String id) {
+    public void setId(@Value("${jdbc.user}") String id) {
         this.id = id;
     }
     
     @Autowired
-    public void setText(@Value("#{'Hello '+randomText.getSpeech()}") String text) {
+    public void setText(@Value("${jdbc.password}") String text) {
         this.text = text;
     }
 
