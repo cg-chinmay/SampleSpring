@@ -20,12 +20,13 @@ public class App {
         // TODO Auto-generated method stub
      ApplicationContext context = new ClassPathXmlApplicationContext("jp/co/rakuten/checkout/beans/ProjectBeans.xml");
      OffersDAO offersDao = (OffersDAO)context.getBean("offersDao");
+     Offer Uoffer = new Offer(10,"shane", "shane56@bing.com", "Spinner");
+     offersDao.update(Uoffer);
      List<Offer> offers = offersDao.getOffers();
      for(Offer offer:offers){
          System.out.println(offer);
      }
-     Offer offer = offersDao.getOffer(3);
-     System.out.println(offer);
+  
      ((ClassPathXmlApplicationContext)context).close();
     }
 
