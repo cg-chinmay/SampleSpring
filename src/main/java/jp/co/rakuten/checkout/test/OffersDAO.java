@@ -8,12 +8,18 @@ import javax.sql.DataSource;
 
 
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component("offersDao")
 public class OffersDAO {
@@ -28,9 +34,10 @@ public class OffersDAO {
     	BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
     	return jdbc.update("update Offers set name=:name, email=:email, text=:text where id=:id", params)==1;
     }
-    public boolean create(Offer offer){
-    	BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
-        return jdbc.update("insert into Offers(name,email,text) values(:name, :email, :text)", params)==1;
+    @Transactional
+    public int[] create(List<Offer> offerList){
+    	SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(offerList.toArray());
+    	return jdbc.batchUpdate("insert into Offers(id, name, text, email) values(:id, :name, :text, :email)", params);
     }
     
     public boolean delete(int id){
